@@ -1,7 +1,7 @@
 # Fix Your Ship
 **Category:** Forensics | **Status:** Solved
 
-Given three corrupted files and told the first one is a PNG. Opened each file in HxD (a hex editor -- a tool that lets you read and edit the raw binary data of any file) to inspect the magic bytes (the first few bytes of a file that identify what file type it actually is, regardless of its extension).
+This was extremely fun. Given three corrupted files and told the first one is a PNG. Opened each file in HxD (a hex editor -- a tool that lets you read and edit the raw binary data of any file) to inspect the magic bytes (the first few bytes of a file that identify what file type it actually is, regardless of its extension).
 
 **File 1 (PNG):**
 Corrupted header: `89 00 00 00 0D 0A 1A 0A`
@@ -33,7 +33,7 @@ The schematics image had a label reading "FILE TYPE BOX" -- a hint pointing at t
 
 ![HxD showing file3 with the scrambled ftyp box bytes](../assets/FYS_7.png)
 
-Recognized `70 66 79 74` as a scrambled version of `66 74 79 70` -- the `ftyp` box that identifies MP4/MOV container files.
+Did some quick googling and confirmed `70 66 79 74` as a scrambled version of `66 74 79 70` -- the `ftyp` box that identifies MP4/MOV container files.
 
 ![Google confirming the hex signature points to an MP4/MOV container](../assets/FYS_8.png)
 
